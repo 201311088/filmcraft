@@ -1,7 +1,9 @@
 # filmcraft-interchange
 
 Timeline interchange for FilmCraft: CMX 3600 EDL, Final Cut Pro 7 XML (xmeml), FCPXML,
-OpenTimelineIO, AAF and OMF import and export, plus Avid ALE. Layer L2: no file I/O; media
+OpenTimelineIO, AAF and OMF import and export, plus Avid ALE and Premiere Pro project (`.prproj`)
+import. The `.prproj` layout was read off projects saved by Premiere Pro for the purpose (never from the
+application); it is described in the `prproj` module docs. Layer L2: no file I/O; media
 references are strings and audio essence is supplied by the caller (the engine).
 
 ## Specifications

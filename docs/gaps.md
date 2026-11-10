@@ -1,6 +1,6 @@
 # Where FilmCraft falls short of Premiere Pro
 
-> **Last reviewed:** 2026-10-12 · **Last updated:** 2026-11-08 · **Change:** minor (G14 catalog counts refreshed; G13 GIF binary transparency retained) · **Target:** Adobe Premiere Pro 2026 (26.5.2)
+> **Last reviewed:** 2026-10-12 · **Last updated:** 2026-11-11 · **Change:** minor (G2: `.prproj` import of bins, media, sequences and clips) · **Target:** Adobe Premiere Pro 2026 (26.5.2)
 
 > **Naming update (2026-11-08):** First-party feature labels now follow the selected ArtCraft naming scheme in [PR #1880](https://github.com/storytold/filmcraft/pull/1880). Capabilities, estimates and parity scores were not re-measured.
 
@@ -54,9 +54,13 @@ platforms** G4, G9, G17; **performance** G16; **ecosystem** G11; **measurement**
 
 ## G2. Premiere's `.prproj` cannot be opened
 
-- **Missing:** import of Premiere project files. `grep -ri prproj crates apps` finds nothing.
-  Today an editor must export FCP7 XML, AAF or OTIO from Premiere first, losing bins, effects and
-  most metadata; there is no "Selection as Premiere Project" export either.
+- **Done:** `File ▸ Import` (and `file.import`, drag and drop, the CLI) reads a `.prproj`: bins, media
+  (path, frame size and rate, sample rate, start timecode), sequences (size, rate, sample rate), video and
+  audio tracks, clips (timeline and source ranges, speed), nested sequences and links
+  (`crates/interchange/src/prproj.rs`).
+- **Missing:** clip and track effects (Motion / Opacity values, Lumetri, audio effects), transitions,
+  markers, caption tracks, track names and states; each is listed in the import report. There is no
+  "Selection as Premiere Project" export either.
 - **Impact:** the beta bar requires opening the target's main format; every switching editor's
   existing work is behind this.
 - **Approach:** `.prproj` is gzip-compressed XML. Clean-room from projects we author ourselves in
@@ -357,6 +361,7 @@ platforms** G4, G9, G17; **performance** G16; **ecosystem** G11; **measurement**
 
 | Date | Change | Summary |
 |---|---|---|
+| 2026-11-11 | minor | G2: `.prproj` import of bins, media, sequences, tracks, clips and links; effects, transitions, markers and captions are reported, not read |
 | 2026-10-30 | minor | G14: three key languages have no catalog (Hindi, Arabic, Vietnamese); Korean, Italian, German and Russian are near-complete; Ukrainian is menus only; G13 GIF transparency retained |
 | 2026-10-12 | minor | Removed shipped items: AVI import (#598), FLAC in MP4 (#603), multicam paging, deselect on empty space (#683), Project marquee (#578), image-sequence downloads in Chrome (#378), slow interchange import (#461) |
 | 2026-10-10 | major | Created from ROADMAP.md's "Where we are lacking" (2026-10-05); re-ranked against Premiere 26.5.2 and the 188 open issues; added `.prproj`, 10-bit / 4:2:2 camera decode, launch crashes and missing PR CI, localization, delivery formats |

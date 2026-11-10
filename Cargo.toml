@@ -74,6 +74,8 @@ chrono = { version = "0.4.45", default-features = false, features = ["std"] }
 rayon = "1"
 proptest = "1"
 roxmltree = "0.21"
+# Pure-Rust DEFLATE (gzip-compressed Premiere .prproj files).
+miniz_oxide = { version = "0.8.9", default-features = false, features = ["with-alloc"] }
 craft-docpath = { version = "0.1.0", git = "https://github.com/storytold/craft-libs", rev = "1b34eba41e62138fc2438d2734523b302840b45d" }
 craft-media = { version = "0.1.0", git = "https://github.com/storytold/craft-libs", rev = "1b34eba41e62138fc2438d2734523b302840b45d", default-features = false }
 
